@@ -18,11 +18,14 @@ int main() {
         // Find all proper divisors and sum them
         for (long long j = 1; j * j <= n; j++) {
             if (n % j == 0) {
-                sum += j;  // j is a divisor
+                if (j != n) {  // j is a proper divisor if it's not the number itself
+                    sum += j;
+                }
                 
                 // Add the corresponding divisor (n/j) if it's different from j and not n itself
-                if (j != n / j && n / j != n) {
-                    sum += n / j;
+                long long other = n / j;
+                if (other != j && other != n) {
+                    sum += other;
                 }
             }
         }
